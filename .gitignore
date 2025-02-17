@@ -172,3 +172,16 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Hooks
+.husky
+node_modules/
+package.json
+package-lock.json
+
+# Deepstream pyds
+*.whl
+
+# models
+*.onnx
+*.engine
