@@ -185,3 +185,4 @@ package-lock.json
 # models
 *.onnx
 *.engine
+*.etlt

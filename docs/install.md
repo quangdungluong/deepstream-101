@@ -39,6 +39,8 @@ This release supports **Ubuntu 20.04** for **DeepStream SDK 6.3** with Python 3.
     # Download and install pyds
     wget https://github.com/NVIDIA-AI-IOT/deepstream_python_apps/releases/download/v1.1.8/pyds-1.1.8-py3-none-linux_x86_64.whl
     pip3 install pyds-1.1.8-py3-none-linux_x86_64.whl
+    # Install cuda-python
+    pip3 install cuda-python
     ```
 
 5. Setup complete - Start exploring DeepStream in Python
