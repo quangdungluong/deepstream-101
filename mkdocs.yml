@@ -8,6 +8,7 @@ nav:
       - Quick Start: index.md
   - DeepStream Python Apps:
       - deepstream-test1: apps/deepstream-test1.md
+      - deepstream-test2: apps/deepstream-test2.md
 
 markdown_extensions:
   - admonition
