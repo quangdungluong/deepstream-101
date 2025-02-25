@@ -26,8 +26,8 @@ This release supports **Ubuntu 20.04** for **DeepStream SDK 6.3** with Python 3.
         -it --rm \
         --runtime nvidia \
         --device /dev/snd \
-        -v ./apps:/apps \
-        -w /apps \
+        -v ./:/deepstream \
+        -w /deepstream \
         --name deepstream-101 \
         -p 8554:8554 \
         nvcr.io/nvidia/deepstream:6.3-triton-multiarch
