@@ -2,6 +2,10 @@
 
 This guide explains how to set up and run the `deepstream-test2` application, which demonstrates object detection and tracking using NVIDIA DeepStream. It leverages `nvinfer` as the primary inference engine (pgie) and `nvtracker` for object tracking. Additionally, two secondary inference engines (sgies) classify detected objects.
 
+## Overview
+
+![deepstream-test2-diagram](../images/deepstream-test2.jpg)
+
 ## Preparing the model
 
 This sample application uses the following pre-trained models from NVIDIA’s NGC catalog:
