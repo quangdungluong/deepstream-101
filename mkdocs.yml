@@ -10,6 +10,7 @@ nav:
   - DeepStream Python Apps:
       - deepstream-test1: apps/deepstream-test1.md
       - deepstream-test2: apps/deepstream-test2.md
+      - deepstream-test3: apps/deepstream-test3.md
 
 markdown_extensions:
   - admonition
