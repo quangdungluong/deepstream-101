@@ -9,7 +9,7 @@
       
       
       
-        <link rel="prev" href="../..">
+        <link rel="prev" href="../../install/">
       
       
         <link rel="next" href="../deepstream-test2/">
@@ -316,6 +316,8 @@
           
         
       
+        
+      
     
     
       
@@ -358,6 +360,28 @@
             
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -375,6 +399,8 @@
   
     
     
+      
+        
       
         
       
@@ -472,6 +498,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#preparing-the-model" class="md-nav__link">
     <span class="md-ellipsis">
       Preparing the model
@@ -535,6 +570,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../deepstream-test3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    deepstream-test3
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -569,6 +626,15 @@
       Page contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      Overview
+    </span>
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#preparing-the-model" class="md-nav__link">
@@ -631,6 +697,18 @@
 <p>The <code>deepstream-test1</code> application shows how to use NVIDIA DeepStream SDK elements in a pipeline and extract meaningful insights from a video stream.
 This sample creates an instance of the <code>nvinfer</code> element, which uses the TensorRT API to perform inference on a model.
 It is crucial to configure the <code>nvinfer</code> element correctly, as many of its behaviors are parameterized through configuration files.</p>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p><img alt="deepstream-test1-diagram" src="../../images/deepstream-test1.jpg"></p>
+<p>The <code>deepstream-test1</code> follows this pipeline:</p>
+<ul>
+<li><strong>File Source</strong> (<code>filesrc</code>): reads a video file</li>
+<li><strong>H.264 Parser</strong> (<code>h264parse</code>): parses the H.264 encoded stream, ensures the input stream is properly formatted before decoding</li>
+<li><strong>Decoder</strong> (<code>nvv4l2decoder</code>): decodes the stream into raw video frames using <strong>NVIDIA hardware acceleration</strong></li>
+<li><strong>Stream Muxer</strong> (<code>nvvstreammux</code>): batches frames for efficient processing/combines multiple input streams into a single batched buffer for processing</li>
+<li><strong>Inference</strong> (<code>nvinfer</code>): runs a deep learning model on the batched frames</li>
+<li><strong>On-Screen Display</strong> (<code>nvdsosd</code>): draws bounding boxes and labels on detected objects</li>
+<li><strong>Fake Sink</strong> (<code>fakesink</code>): discards the output without rendering. This is especially useful when running on <strong>remote server or Jetson devices without a monitor</strong></li>
+</ul>
 <h2 id="preparing-the-model">Preparing the model<a class="headerlink" href="#preparing-the-model" title="Permanent link">¶</a></h2>
 <p>This sample uses the <a href="https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/trafficcamnet">TrafficCamNet</a> model, which detects 4 classes: <code>Vehicle</code>, <code>Road Sign</code>, <code>Two-Wheeler</code> and <code>Person</code>. The configuration file used for this detector is <code>dstest1_pgie_config.txt</code>.</p>
 <h3 id="downloading-the-model">Downloading the model<a class="headerlink" href="#downloading-the-model" title="Permanent link">¶</a></h3>
@@ -643,7 +721,7 @@ It is crucial to configure the <code>nvinfer</code> element correctly, as many o
 <p>The application will automatically export the model into an INT8 engine before execution.
 </p><div class="language-bash highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-1-1">1</a></span>
 <span class="normal"><a href="#__codelineno-1-2">2</a></span>
-<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>deepstream-test1
+<span class="normal"><a href="#__codelineno-1-3">3</a></span></pre></div></td><td class="code"><div><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nb">cd</span><span class="w"> </span>apps/deepstream-test1
 </span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="c1"># Run the test application with an H.264 elementary stream</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3"></a>python3<span class="w"> </span>deepstream_test_1.py<span class="w"> </span>/opt/nvidia/deepstream/deepstream/samples/streams/sample_720p.h264
 </span></code></pre></div></td></tr></table></div></div>
@@ -669,7 +747,7 @@ It is crucial to configure the <code>nvinfer</code> element correctly, as many o
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-19T03:17:57+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-25T16:16:07+00:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-25</span>
   </span>
 
     
@@ -714,7 +792,7 @@ It is crucial to configure the <code>nvinfer</code> element correctly, as many o
     
     <nav class="md-footer__inner md-grid" aria-label="footer.title">
         
-        <a href="../.." class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../../install/" class="md-footer__link md-footer__link--prev" rel="prev">
             <div class="md-footer__button md-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
             </div>
@@ -723,7 +801,7 @@ It is crucial to configure the <code>nvinfer</code> element correctly, as many o
                     <span class="md-footer__direction">
                         Previous
                     </span>
-                    Quick Start
+                    Installation
                 </div>
             </div>
         </a>
