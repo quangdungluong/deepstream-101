@@ -18,6 +18,8 @@ The `deepstream-test1` follows this pipeline:
 - **On-Screen Display** (`nvdsosd`): draws bounding boxes and labels on detected objects
 - **Fake Sink** (`fakesink`): discards the output without rendering. This is especially useful when running on **remote server or Jetson devices without a monitor**
 
+![gst-nvinfer](../images/gst-nvinfer.jpg)
+
 ## Preparing the model
 
 This sample uses the [TrafficCamNet](https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/trafficcamnet) model, which detects 4 classes: `Vehicle`, `Road Sign`, `Two-Wheeler` and `Person`. The configuration file used for this detector is `dstest1_pgie_config.txt`.

@@ -1,6 +1,7 @@
 # Deepstream Test 3
 
 This tutorial provides a step-by-step guide to building a DeepStream pipeline that:
+
 * Utilizes `uridecodebin` for handling different types of inputs (RTSP streams, files, different codecs).
 * Demonstrates how to enable latency measurement using a probe function.
 * Showcases the use of `nvinferserver`, including `nvinferserver` with gRPC-based inference.
